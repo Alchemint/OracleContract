@@ -8,8 +8,8 @@ Oracle是基于Alchemint系统的一个智能合约,负责为[solution](https://
 
 ### Script Hash : 
 
-0xfde69a7dd2a1c948977fb3ce512158987c0e2197 (PrivateNet)  
-0xfde69a7dd2a1c948977fb3ce512158987c0e2197 (TestNet)  
+* 0xfde69a7dd2a1c948977fb3ce512158987c0e2197 (PrivateNet)  
+* 0xfde69a7dd2a1c948977fb3ce512158987c0e2197 (TestNet)  
 
 SAR Contract Address: 
 
@@ -66,9 +66,9 @@ TypeA 方法中能获取到的所有Key名称如下:
 ```
 Using "setTypeB" 设置单个节点从交易所获取到的价格
 
-para:你想要喂价的Key名
-from:喂价的节点钱包地址
-value:价格
+* para:你想要喂价的Key名
+* from:喂价的节点钱包地址
+* value:价格
 
 ```C#
  if (operation == "setTypeB")  {
