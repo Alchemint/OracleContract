@@ -1,6 +1,6 @@
 # OracleContract 
 
-Oracle是基于Alchemint系统的一个智能合约,负责为solution和businessSolution项目提供外部数据以及全局参数配置
+Oracle是基于Alchemint系统的一个智能合约,负责为[solution](https://github.com/Alchemint/solution)和[businessSolution](https://github.com/Alchemint/businessSolution)项目提供外部数据以及全局参数配置
 
 ## Release Note：
 
