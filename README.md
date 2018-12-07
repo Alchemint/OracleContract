@@ -1,11 +1,15 @@
 # OracleContract 
-B端和C端公共Oracle合约
+
+Oracle是基于Alchemint系统的一个智能合约,负责为solution和businessSolution项目提供外部数据以及全局参数配置
 
 ## Release Note：
 
-**1.0.0**
+**1.0.1**
 
-Script Hash : 
+### Script Hash : 
+
+0xfde69a7dd2a1c948977fb3ce512158987c0e2197 (PrivateNet)  
+0xfde69a7dd2a1c948977fb3ce512158987c0e2197 (TestNet)  
 
 SAR Contract Address: 
 
@@ -26,37 +30,84 @@ getStructConfig | - | Config | 获取全局配置对象Config
 getApprovedAddrs | string=>key | object(NodeObj[]) | 根据key查询已授权喂价器地址和状态
 getAddrWithParas | string=>key | object(NodeObj[]) | 根据key查询喂价器地址和价格
 
-## NodeObj
+## Using OracleContract 
 
-            //授权的节点地址
-            public byte[] addr; 
-            
-            //价格/状态
-            public BigInteger value;
+Using "getTypeA" key:你想要获取的配置名称
+```C#
+if (operation == "getTypeA") {
 
-## Config
-        //B端抵押率   50
-        public BigInteger liquidate_line_rate_b;
-        //C端抵押率  150
-        public BigInteger liquidate_line_rate_c;
+    if (args.Length != 1) return false;
 
-        //C端清算折扣  90
-        public BigInteger liquidate_dis_rate_c;
+    string key = (string)args[0];
 
-        //C端费用率  15秒的费率 乘以10的16次方  66,666,666
-        public BigInteger fee_rate_c;
+    return getTypeA(key); 
+    
+    }
+```
+TypeA 方法中能获取到的所有Key名称如下:
+```C#
+  public BigInteger liquidate_line_rate_b;
 
-        //C端最高可清算抵押率  160
-        public BigInteger liquidate_top_rate_c;
+  public BigInteger liquidate_line_rate_c;
 
-        //C端伺机者可清算抵押率 120
-        public BigInteger liquidate_line_rateT_c;
+  public BigInteger liquidate_dis_rate_c;
 
-        //C端发行费用 1000
-        public BigInteger issuing_fee_c;
+  public BigInteger fee_rate_c;
 
-        //B端发行费用  1000000000
-        public BigInteger issuing_fee_b;
+  public BigInteger liquidate_top_rate_c;
 
-        //C端最大发行量(债务上限)  1000000000000
-        public BigInteger debt_top_c;
+  public BigInteger liquidate_line_rateT_c;
+
+  public BigInteger issuing_fee_c;
+
+  public BigInteger issuing_fee_b;
+
+  public BigInteger debt_top_c;
+```
+Using "setTypeB" 设置单个节点从交易所获取到的价格
+
+para:你想要喂价的Key名
+from:喂价的节点钱包地址
+value:价格
+
+```C#
+ if (operation == "setTypeB")  {
+  
+  if (args.Length != 3) return false;
+
+  string para = (string)args[0];
+
+  byte[] from = (byte[])args[1];
+
+  BigInteger value = (BigInteger)args[2];
+
+  BigInteger state = (BigInteger)Storage.Get(Storage.CurrentContext, GetParaAddrKey(para, from)).AsBigInteger();
+
+  if (state == 0) return false;
+
+  return setTypeB(para, from, value);
+}
+```
+Using "getTypeB" 获取所有喂价节点取中位数后的价格 key:你想要获取的Key名称 
+
+目前所有的资产Key名 "neo_price", "sneo_price", "gas_price", "sds_price"
+```C#
+if (operation == "getTypeB") {
+
+  if (args.Length != 1) return false;
+ 
+  string key = (string)args[0];
+
+  return getTypeB(key);
+}
+```
+Using "getStructConfig" 获取所有TypeA中全局参数的值
+```C#
+if (operation == "getStructConfig") {
+               
+      return getStructConfig();
+}
+```
+
+
+
