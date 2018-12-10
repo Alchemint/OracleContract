@@ -31,7 +31,7 @@ getApprovedAddrs | string=>key | object(NodeObj[]) | Query the authorized feeder
 getAddrWithParas | string=>key | object(NodeObj[]) | Query the feeder address and price according to the key
 ## Using OracleContract 
 
-Using "getTypeA" key: the name of the configuration you want to get
+Using `getTypeA` key: the name of the configuration you want to get
 ```C#
 if (operation == "getTypeA") {
 
@@ -63,7 +63,7 @@ All Key names that can be obtained in the TypeA method are as follows:
 
   public BigInteger debt_top_c;
 ```
-Using "setTypeB" sets the price that a single node gets from the exchange
+Using `setTypeB` sets the price that a single node gets from the exchange
 
 * Para: the name of the key you want to feed
 * From: the node wallet address of the feed price
@@ -87,7 +87,7 @@ Using "setTypeB" sets the price that a single node gets from the exchange
   return setTypeB(para, from, value);
 }
 ```
-Using "getTypeB" to get the price of all the feed nodes after taking the median key: the name of the key you want to get
+Using `getTypeB` to get the price of all the feed nodes after taking the median key: the name of the key you want to get
 
 Currently the Key name of all asset names: "neo_price", "sneo_price", "gas_price", "sds_price"
 ```C#
@@ -100,7 +100,7 @@ if (operation == "getTypeB") {
   return getTypeB(key);
 }
 ```
-Using "getStructConfig" to get the values of all global parameters in TypeA
+Using `getStructConfig` to get the values of all global parameters in TypeA
 ```C#
 if (operation == "getStructConfig") {
                
