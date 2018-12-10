@@ -31,7 +31,8 @@ getApprovedAddrs | string=>key | object(NodeObj[]) | Query the authorized feeder
 getAddrWithParas | string=>key | object(NodeObj[]) | Query the feeder address and price according to the key
 ## Using OracleContract 
 
-Using `getTypeA` key: the name of the configuration you want to get
+Using `getTypeA` 
+* key: the name of the configuration you want to get
 ```C#
 if (operation == "getTypeA") {
 
