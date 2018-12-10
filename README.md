@@ -88,7 +88,8 @@ Using `setTypeB` sets the price that a single node gets from the exchange
   return setTypeB(para, from, value);
 }
 ```
-Using `getTypeB` to get the price of all the feed nodes after taking the median key: the name of the key you want to get
+Using `getTypeB` to get the price of all the feed nodes after taking the median 
+* key: the name of the key you want to get
 
 Currently the Key name of all asset names: "neo_price", "sneo_price", "gas_price", "sds_price"
 ```C#
